@@ -1,0 +1,7 @@
+build/*
+build_release/*
+build_debug/*
+include/version.hh
+.vscode/*
+.cache/*
+.clang-format*
