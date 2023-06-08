@@ -30,10 +30,10 @@ include(UseSWIG)
 
 set(Boost_USE_STATIC_LIBS ON)
 
-find_package(Boost REQUIRED COMPONENTS serialization system thread)
+find_package(Boost REQUIRED COMPONENTS serialization system thread unit_test_framework)
 message(STATUS "Boost_VERSION: ${Boost_VERSION}")
 message(STATUS "Boost_LIBRARIES: ${Boost_LIBRARIES}")
-message(STATUS "boost_dir" ${Boost_DIR})
+message(STATUS "boost_dir: " ${Boost_DIR})
 
 find_package(FMT REQUIRED)
 
@@ -42,8 +42,9 @@ include_directories(${APP_ROOT_HOME}/include/cmd)
 include_directories(${APP_ROOT_HOME}/include/utility)
 
 include_directories(${TCL_INCLUDE_PATH})
+include_directories(${Boost_INCLUDE_DIRS})
 
 # add_subdirectory(database)
 add_subdirectory(main)
 add_subdirectory(cmd)
-# add_subdirectory(toolkit)
+add_subdirectory(test)
