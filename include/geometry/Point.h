@@ -19,10 +19,15 @@ namespace geometry
         Point(const Point &p);
         ~Point();
 
+        int x() { return m_x; }
+        int y() { return m_y; }
+
         void swap(Point &p);
 
         Point &operator+=(const Point &p);
         Point &operator-=(const Point &p);
+        Point &operator*=(double scale);
+        Point &operator/=(double scale);
 
         bool operator<(const Point &p) const;
         bool operator==(const Point &p) const;

@@ -34,6 +34,19 @@ namespace geometry
         m_y -= p.m_y;
         return *this;
     }
+    inline Point &Point::operator*=(double scale)
+    {
+        // TODO: implement static int rounded (double v) { return v > 0 ? v + 0.5 : v - 0.5; }
+        m_x = util::rounded(m_x * scale);
+        m_y = util::rounded(m_y * scale);
+        return *this;
+    }
+    inline Point &Point::operator/=(double scale)
+    {
+        m_x = util::rounded(m_x / scale);
+        m_y = util::rounded(m_y / scale);
+        return *this;
+    }
 
     inline bool Point::operator<(const Point &p) const
     {
