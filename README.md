@@ -6,3 +6,5 @@ It should include an EDA-friendly geometry.
 
 * code style?
 * dev workflow?
+* [development record](./doc/record.md)
+
