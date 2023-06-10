@@ -1,5 +1,5 @@
 {
-  "C_Cpp.clang_format_style": "Google"
+  "C_Cpp.clang_format_style": "Google",
   "CppHelper.SourcePattern": [
     "{FILE}.inl",
     "{FILE}.cpp",
@@ -30,6 +30,6 @@
     "/src/geometry/{FILE}.cxx",
     "/src/geometry/{FILE}.cc",
     "/src/geometry/{FILE}.cp",
-    "/src/geometry/{FILE}.c",
+    "/src/geometry/{FILE}.c"
   ]
 }
