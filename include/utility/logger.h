@@ -59,7 +59,7 @@ private:
             tmp->tm_hour, 
             tmp->tm_min, 
             tmp->tm_sec, 
-            args...);)
+            args...));
     }
     
     static constexpr const char *utl_tool_names_[] = { FOREACH_TOOL(GENERATE_STRING) };

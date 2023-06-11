@@ -1,15 +1,19 @@
 
 #include "init.h"
-#include "testCmdMgr.h"
+
+#include <stdlib.h>
+
+#include <array>
+#include <cstring>
+
 #include "tcl.h"
 #include "tclreadline.h"
-#include <cstring>
-#include <stdlib.h>
-#include <array>
+#include "testCmdMgr.h"
+
+#include "gui.h"
 
 #ifdef ENABLE_READLINE
-static int tclReadlineInit(Tcl_Interp *interp)
-{
+static int tclReadlineInit(Tcl_Interp *interp) {
   std::array<const char *, 6> readline_cmds = {
       // "history event",
       "eval $auto_index(::tclreadline::ScriptCompleter)",
@@ -19,10 +23,8 @@ static int tclReadlineInit(Tcl_Interp *interp)
       "proc ::tclreadline::prompt2 {} { return \"...> \" }",
       "::tclreadline::Loop"};
 
-  for (auto cmd : readline_cmds)
-  {
-    if (TCL_ERROR == Tcl_Eval(interp, cmd))
-    {
+  for (auto cmd : readline_cmds) {
+    if (TCL_ERROR == Tcl_Eval(interp, cmd)) {
       printf("eval cmd: %s error\n", cmd);
       return TCL_ERROR;
     }
@@ -31,26 +33,22 @@ static int tclReadlineInit(Tcl_Interp *interp)
 }
 #endif
 
-static int TclAppInit(Tcl_Interp *interp)
-{
-  if (Tcl_Init(interp) == TCL_ERROR)
-  {
+static int TclAppInit(Tcl_Interp *interp) {
+  if (Tcl_Init(interp) == TCL_ERROR) {
     return TCL_ERROR;
   }
 #ifdef ENABLE_TCLX
-  if (Tclx_Init(interp) == TCL_ERROR)
-  {
+  if (Tclx_Init(interp) == TCL_ERROR) {
     return TCL_ERROR;
   }
 #endif
 #ifdef ENABLE_READLINE
-  if (Tclreadline_Init(interp) == TCL_ERROR)
-  {
+  if (Tclreadline_Init(interp) == TCL_ERROR) {
     return TCL_ERROR;
   }
-  Tcl_StaticPackage(interp, "tclreadline", Tclreadline_Init, Tclreadline_SafeInit);
-  if (Tcl_EvalFile(interp, TCLRL_LIBRARY "/tclreadlineInit.tcl") != TCL_OK)
-  {
+  Tcl_StaticPackage(interp, "tclreadline", Tclreadline_Init,
+                    Tclreadline_SafeInit);
+  if (Tcl_EvalFile(interp, TCLRL_LIBRARY "/tclreadlineInit.tcl") != TCL_OK) {
     printf("Failed to load tclreadline\n");
   }
 #endif
@@ -58,40 +56,35 @@ static int TclAppInit(Tcl_Interp *interp)
   App::CmdInterface::Instance()->Initialize(interp);
 
 #ifdef ENABLE_READLINE
-  if (TCL_ERROR == tclReadlineInit(interp))
-  {
+  if (TCL_ERROR == tclReadlineInit(interp)) {
     printf("init tclreadline error\n");
   }
 #endif
   return TCL_OK;
 }
 
-void InitRoute() {}
+void InitApp() {}
 
-int InitRoute(int args, char **argv)
-{
+int InitApp(int args, char **argv) {
   // TODO: deal with arguments
-
+  
+  gui::InitGui(args, argv);
   Tcl_Main(1, argv, TclAppInit);
   return 0;
 }
 
-char *unencode(const char *inits[])
-{
+char *unencode(const char *inits[]) {
   size_t length = 0;
-  for (const char **e = inits; *e; e++)
-  {
+  for (const char **e = inits; *e; e++) {
     const char *init = *e;
     length += strlen(init);
   }
   char *unencoded = new char[length / 3 + 1];
   char *u = unencoded;
-  for (const char **e = inits; *e; e++)
-  {
+  for (const char **e = inits; *e; e++) {
     const char *init = *e;
     size_t init_length = strlen(init);
-    for (const char *s = init; s < &init[init_length]; s += 3)
-    {
+    for (const char *s = init; s < &init[init_length]; s += 3) {
       char code[4] = {s[0], s[1], s[2], '\0'};
       char ch = atoi(code);
       *u++ = ch;
@@ -101,12 +94,10 @@ char *unencode(const char *inits[])
   return unencoded;
 }
 
-void evalTclInit(Tcl_Interp *interp, const char *inits[])
-{
+void evalTclInit(Tcl_Interp *interp, const char *inits[]) {
   char *unencoded = unencode(inits);
   // printf("unencoded==> %s\n", unencoded);
-  if (Tcl_Eval(interp, unencoded) != TCL_OK)
-  {
+  if (Tcl_Eval(interp, unencoded) != TCL_OK) {
     Tcl_Eval(interp, "$errorInfo");
     const char *tclErrInfo = Tcl_GetStringResult(interp);
     fprintf(stderr, "Error: TCL init script: %s.\n", tclErrInfo);

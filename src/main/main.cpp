@@ -4,6 +4,6 @@
 int main(int args, char **argv)
 {
 
-  InitRoute(args, argv);
+  InitApp(args, argv);
   return 0;
 }
