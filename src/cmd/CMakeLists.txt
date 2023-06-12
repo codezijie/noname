@@ -1,10 +1,10 @@
 include("swig_lib")
 include("messages")
 
-swig_lib(NAME       swig_route
-         NAMESPACE  route
-         I_FILE     hx_route.i
-         SCRIPTS    hx_route.tcl
+swig_lib(NAME       swig_app
+         NAMESPACE  app
+         I_FILE     app.i
+         SCRIPTS    test.tcl
                     utility.tcl
 )
 

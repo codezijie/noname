@@ -2,6 +2,7 @@
 
 %{
 #include "testCmdMgr.h"
+#include "gui.h"
 #include <stdio.h>
 %}
 
@@ -13,5 +14,8 @@ void test(const char* cmdName) {
   }
 }
 
+void runGui() {
+  gui::Gui::GetGui()->run();
+}
 
 %}

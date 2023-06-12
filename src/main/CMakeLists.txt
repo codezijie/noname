@@ -17,7 +17,7 @@ ${TCL_READLINE_LIBRARY}
 
 cmd
 app_gui
-swig_route
+swig_app
 Qt6::Gui
 Qt6::Widgets
 )

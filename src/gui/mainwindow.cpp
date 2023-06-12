@@ -11,7 +11,7 @@
 
 #include "mainwindow.h"
 
-#include <QtGui/QWindow>
+#include <QtGui/QGuiApplication>
 #include <QtGui/QScreen>
 
 namespace gui {
@@ -20,7 +20,7 @@ MainWindow::MainWindow() { Init(); }
 
 void MainWindow::Init() { 
   setWindowTitle("App"); 
-  auto size = windowHandle()->screen()->size();
+  auto size = QGuiApplication::primaryScreen()->size();
   resize(size * 0.5);
 }
 

@@ -6,11 +6,10 @@
 #include <array>
 #include <cstring>
 
+#include "gui.h"
 #include "tcl.h"
 #include "tclreadline.h"
 #include "testCmdMgr.h"
-
-#include "gui.h"
 
 #ifdef ENABLE_READLINE
 static int tclReadlineInit(Tcl_Interp *interp) {
@@ -67,11 +66,13 @@ void InitApp() {}
 
 int InitApp(int args, char **argv) {
   // TODO: deal with arguments
-  
+
   gui::InitGui(args, argv);
   Tcl_Main(1, argv, TclAppInit);
   return 0;
 }
+
+void DeleteApp() { gui::DeleteGui(); }
 
 char *unencode(const char *inits[]) {
   size_t length = 0;

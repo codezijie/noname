@@ -15,12 +15,12 @@
 namespace App
 {
 
-  extern const char *swig_route_tcl_inits[];
+  extern const char *swig_app_tcl_inits[];
 
-} // namespace route
+} // namespace App 
 extern "C"
 {
-  extern int Swig_route_Init(Tcl_Interp *interp);
+  extern int Swig_app_Init(Tcl_Interp *interp);
 }
 extern void evalTclInit(Tcl_Interp *interp, const char *[]);
 namespace App
@@ -38,7 +38,7 @@ namespace App
   }
   bool CmdInterface::Initialize(Tcl_Interp *interp)
   {
-    if (!InitRouteSwig(interp))
+    if (!InitAppSwig(interp))
     {
       return false;
     }
@@ -52,15 +52,15 @@ namespace App
     return true;
   }
 
-  bool CmdInterface::InitRouteSwig(Tcl_Interp *interp)
+  bool CmdInterface::InitAppSwig(Tcl_Interp *interp)
   {
-    int ret = ::Swig_route_Init(interp);
+    int ret = ::Swig_app_Init(interp);
     if (ret != 0)
     {
-      std::cout << "error: Route_init=" << ret << std::endl;
+      std::cout << "error: app_init=" << ret << std::endl;
       return false;
     }
-    ::evalTclInit(interp, App::swig_route_tcl_inits);
+    ::evalTclInit(interp, App::swig_app_tcl_inits);
     return true;
   }
 

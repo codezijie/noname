@@ -11,20 +11,22 @@
 
 #pragma once
 
-#include <QtWidgets/QApplication>
-
-
+class QApplication;
 namespace gui {
 
 class MainWindow;
+
 /**
  * @brief init gui interface
- * 
- * @param argc 
- * @param argv 
+ *
+ * @param argc
+ * @param argv
  */
-
 void InitGui(int argc, char** argv);
+/**
+ * @brief delete gui pointer
+ *
+ */
 void DeleteGui();
 
 class Gui {
@@ -32,16 +34,28 @@ class Gui {
   Gui(int argc, char** argv);
   /**
    * @brief Get QApplication object
-   * 
-   * @return QApplication* 
+   *
+   * @return QApplication*
    */
   QApplication* GetGuiApp() const { return m_gui_app; }
   ~Gui();
+
   static Gui* GetGui() { return m_gui; }
-  void Init();
-  void Show();
+  /**
+   * @brief start a thread to run gui
+   * 
+   */
+  void run();
 
  private:
+  /**
+   * @brief init all paramters in gui
+   * 
+   */
+  void Init();
+  void Show();
+  void exec();
+
   QApplication* m_gui_app = nullptr;
   MainWindow* m_mainwindow = nullptr;
   static Gui* m_gui;

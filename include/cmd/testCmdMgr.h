@@ -1,7 +1,7 @@
 /**
  * @file hx_interface.h
  * @author yanqing (yanqing.cao@huaxinjushu.com)
- * @brief the tcl interface of hx_route
+ * @brief the tcl interface of 
  * @version 0.1
  * @date 2023-03-10
  *
@@ -28,8 +28,8 @@ public:
   bool RunTestCmd(const char* cmdName);
 
 private:
-  bool InitRouteSwig(Tcl_Interp* interp);
+  bool InitAppSwig(Tcl_Interp* interp);
   TestCmdMgr* testCmdMgr_{nullptr};
 };
 
-} // namespace route
+} // namespace App
