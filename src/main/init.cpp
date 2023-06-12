@@ -72,7 +72,6 @@ int InitApp(int args, char **argv) {
   return 0;
 }
 
-void DeleteApp() { gui::DeleteGui(); }
 
 char *unencode(const char *inits[]) {
   size_t length = 0;
