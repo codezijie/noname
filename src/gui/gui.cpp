@@ -18,7 +18,10 @@
 
 #include "mainwindow.h"
 #include "utility.h"
+
 namespace gui {
+
+extern void Qt_InitNotifier(QApplication* app);
 
 void InitGui(int argc, char** argv) { new Gui(argc, argv); }
 
@@ -43,9 +46,8 @@ void Gui::Show() { m_mainwindow->show(); }
 void Gui::exec() { m_gui_app->exec(); }
 
 void Gui::run() {
-  auto app = GetGuiApp();
+  Qt_InitNotifier(GetGuiApp());
   Show();
-  app->exec();
 }
 #if 0
 void GuiCallBack() {
