@@ -11,10 +11,12 @@
 #include "tclreadline.h"
 #include "testCmdMgr.h"
 
+extern void Qt_InitNotifier(QApplication* app);
+
 #ifdef ENABLE_READLINE
 static int tclReadlineInit(Tcl_Interp *interp) {
-  std::array<const char *, 6> readline_cmds = {
-      // "history event",
+  std::array<const char *, 7> readline_cmds = {
+      "history event",
       "eval $auto_index(::tclreadline::ScriptCompleter)",
       "::tclreadline::readline builtincompleter true",
       "::tclreadline::readline customcompleter ::tclreadline::ScriptCompleter",

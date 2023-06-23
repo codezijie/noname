@@ -13,6 +13,8 @@
 #include <tcl.h>
 #include <QtCore/QSocketNotifier>
 #include <QtCore/QObject>
+
+extern "C" int TclInExit(void);
 namespace gui {
 
 class TclTimeNotifier : public QObject {

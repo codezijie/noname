@@ -141,6 +141,9 @@ static void ServiceModeHook(int) {}
 
 void Qt_InitNotifier(QApplication *app) {
   Q_ASSERT(app);
+  if (TclInExit()) {
+    return;
+  }
   Tcl_NotifierProcs notifier_info;
   notifier_info.createFileHandlerProc = CreateFileHandler;
   notifier_info.deleteFileHandlerProc = DeleteFileHandler;
@@ -170,12 +173,15 @@ static void DefineTimer(Tcl_Time *timerPtr) {
 static void CreateFileHandler(int fd, int mask, Tcl_FileProc *proc,
                               ClientData clientData) {
   Q_ASSERT(notifier);
-  TclFileHandler *filePtr;
+  TclFileHandler *filePtr = nullptr;
   for (filePtr = notifier->m_firstFileHandlerPtr; filePtr != nullptr;
        filePtr = filePtr->nextPtr) {
     if (filePtr->fd == fd) {
       break;
     }
+  }
+  if (filePtr == nullptr) {
+    filePtr = new TclFileHandler(fd);
   }
   filePtr->proc = proc;
   filePtr->clientData = clientData;
