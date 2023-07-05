@@ -15,4 +15,8 @@
 
 namespace util {
 
+IMPLEMENT_SINGLETON(GlobalObject);
+
+
+
 } // namespace util

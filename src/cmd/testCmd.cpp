@@ -10,6 +10,9 @@
  */
 
 #include "testCmd.h"
+#include "utility.h"
+#include <tcl.h>
+#include <thread>
 #include <algorithm>
 #include <iostream>
 
@@ -22,6 +25,7 @@ TestCmdMgr::TestCmdMgr() {
 
 void TestCmdMgr::Initalize() { 
 	RegisterCmd("demo", std::make_unique<DemoTestCmd>()); 
+	RegisterCmd("interp", std::make_unique<InterpTestCmd>()); 
 }
 
 bool TestCmdMgr::RegisterCmd(const std::string &cmdName, std::unique_ptr<BaseTestCmd> &&cmdInterface) {
@@ -69,5 +73,36 @@ bool DemoTestCmd::Run() {
 }
 
 // end DemoTestCmd
+
+
+// start InterpTestCmd
+void InterpTestCmd::GenFakeData() {
+  // do nothing
+}
+
+bool InterpTestCmd::Run() {
+  auto interp = util::GlobalObject::Instance()->GetInterp();
+  std::string cmd = "puts \"run cmd in main-thread\"";
+  if (TCL_ERROR == Tcl_Eval(interp, cmd.c_str())) {
+    std::cout << "eval: " << cmd << " error\n";
+  }
+  std::thread t(thread_main);
+  t.join();
+  std::thread t2(thread_main);
+  t2.join();
+  return true;
+}
+
+void InterpTestCmd::thread_main() {
+  auto interp = util::GlobalObject::Instance()->GetInterp();
+  std::string cmd = "puts \"run cmd in sub-thread\"";
+  std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
+  if (TCL_ERROR == Tcl_Eval(interp, cmd.c_str())) {
+    std::cout << "eval: " << cmd << " error\n";
+  }
+}
+
+// end InterpTestCmd
+
 
 } // namespace App

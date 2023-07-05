@@ -16,5 +16,6 @@ ${TCL_READLINE_LIBRARY}
 
 
 cmd
+app_utility
 swig_route
 )

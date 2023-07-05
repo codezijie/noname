@@ -3,6 +3,7 @@
 #include "testCmdMgr.h"
 #include "tcl.h"
 #include "tclreadline.h"
+#include "utility.h"
 #include <cstring>
 #include <stdlib.h>
 #include <array>
@@ -37,6 +38,7 @@ static int TclAppInit(Tcl_Interp *interp)
   {
     return TCL_ERROR;
   }
+  util::GlobalObject::Instance()->SetInterp(interp);
 #ifdef ENABLE_TCLX
   if (Tclx_Init(interp) == TCL_ERROR)
   {
