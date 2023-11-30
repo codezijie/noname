@@ -12,67 +12,55 @@
 #include "testCmdMgr.h"
 #include "testCmd.h"
 #include <iostream>
-namespace App
-{
+namespace App {
 
-  extern const char *swig_route_tcl_inits[];
+extern const char *swig_route_tcl_inits[];
 
-} // namespace route
-extern "C"
-{
-  extern int Swig_route_Init(Tcl_Interp *interp);
+} // namespace App
+extern "C" {
+extern int Swig_route_Init(Tcl_Interp *interp);
 }
 extern void evalTclInit(Tcl_Interp *interp, const char *[]);
-namespace App
-{
+namespace App {
 
-  IMPLEMENT_SINGLETON(CmdInterface);
+IMPLEMENT_SINGLETON(CmdInterface);
 
-  CmdInterface::~CmdInterface()
-  {
-    if (nullptr != testCmdMgr_)
-    {
-      delete testCmdMgr_;
-      testCmdMgr_ = nullptr;
-    }
+CmdInterface::~CmdInterface() {
+  if (nullptr != testCmdMgr_) {
+    delete testCmdMgr_;
+    testCmdMgr_ = nullptr;
   }
-  bool CmdInterface::Initialize(Tcl_Interp *interp)
-  {
-    if (!InitRouteSwig(interp))
-    {
-      return false;
-    }
-    testCmdMgr_ = new TestCmdMgr();
-    return true;
+}
+bool CmdInterface::Initialize(Tcl_Interp *interp) {
+  if (!InitRouteSwig(interp)) {
+    return false;
   }
+  testCmdMgr_ = new TestCmdMgr();
+  return true;
+}
 
-  bool CmdInterface::DeInitialize()
-  {
-    // TODO
-    return true;
-  }
+bool CmdInterface::DeInitialize() {
+  // TODO
+  return true;
+}
 
-  bool CmdInterface::InitRouteSwig(Tcl_Interp *interp)
-  {
-    int ret = ::Swig_route_Init(interp);
-    if (ret != 0)
-    {
-      std::cout << "error: Route_init=" << ret << std::endl;
-      return false;
-    }
-    ::evalTclInit(interp, App::swig_route_tcl_inits);
-    return true;
+bool CmdInterface::InitRouteSwig(Tcl_Interp *interp) {
+  int ret = ::Swig_route_Init(interp);
+  if (ret != 0) {
+    std::cout << "error: Route_init=" << ret << std::endl;
+    return false;
   }
+  ::evalTclInit(interp, App::swig_route_tcl_inits);
+  return true;
+}
 
-  bool CmdInterface::RunTestCmd(const char *cmdName)
-  {
-    auto cmd = testCmdMgr_->GetTestCmdByName(cmdName);
-    if (nullptr == cmd)
-    {
-      return false;
-    }
-    cmd->GenFakeData();
-    return cmd->Run();
+bool CmdInterface::RunTestCmd(const char *cmdName) {
+  auto cmd = testCmdMgr_->GetTestCmdByName(cmdName);
+  if (nullptr == cmd) {
+    return false;
   }
+  cmd->GenFakeData();
+  return cmd->Run();
+}
 
 } // namespace App

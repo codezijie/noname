@@ -31,12 +31,12 @@ enum TYPE { POINT, POLYGON };
 template <typename T>
 class DShape : public std::enable_if_t<
                    std::is_same_v<T, Polygon> || std::is_same_v<T, Point>, T> {
- public:
+public:
   using T::T;
   bool IsDraw() const { return m_flag & DRAW; }
   inline int GetGroupNum() const { return m_group; }
 
- private:
+private:
   unsigned int m_flag = 0;
   int m_group = 0;
 };
@@ -46,14 +46,14 @@ class DShape : public std::enable_if_t<
  *
  */
 
-using PolygonList = std::vector<DShape<Polygon>*>;
-using PointList = std::vector<DShape<Point>*>;
-using PolygonListIter = std::vector<DShape<Polygon>*>::iterator;
+using PolygonList = std::vector<DShape<Polygon> *>;
+using PointList = std::vector<DShape<Point> *>;
+using PolygonListIter = std::vector<DShape<Polygon> *>::iterator;
 
 class TopModule {
   DECLARE_SINGLETON(TopModule)
 
- public:
+public:
   /**
    * @brief Get the Polygon List that need paint
    *
@@ -66,8 +66,8 @@ class TopModule {
    */
   void GetAllPolygonInfo() const;
 
- private:
+private:
   PolygonList m_polygen_list;
 };
 
-}  // namespace db
+} // namespace db

@@ -16,11 +16,10 @@
 namespace db {
 
 PolygonList TopModule::GetDrawPolygenList() {
-  //TODO: return shape list that will be painted on gui widget.
-
+  // TODO: return shape list that will be painted on gui widget.
 }
 
 void TopModule::GetAllPolygonInfo() const {
   // TODO: print
 }
-}  // namespace db
+} // namespace db

@@ -57,4 +57,4 @@ inline Point &operator-(const Point &p1, const Point &p2) {
   return p;
 }
 
-}  // namespace geometry
+} // namespace geometry

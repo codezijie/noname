@@ -4,3 +4,4 @@ build_debug/*
 include/version.hh
 .cache/*
 .clang-format*
+.vscode
