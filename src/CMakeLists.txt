@@ -37,11 +37,12 @@ message(STATUS "boost_dir: " ${Boost_DIR})
 
 find_package(FMT REQUIRED)
 
+include_directories(${APP_ROOT_HOME}/src)
 include_directories(${APP_ROOT_HOME}/include)
-include_directories(${APP_ROOT_HOME}/include/cmd)
-include_directories(${APP_ROOT_HOME}/include/utility)
-include_directories(${APP_ROOT_HOME}/include/geometry)
-include_directories(${APP_ROOT_HOME}/include/database)
+include_directories(${APP_ROOT_HOME}/src/cmd)
+include_directories(${APP_ROOT_HOME}/src/utility)
+include_directories(${APP_ROOT_HOME}/src/geometry)
+include_directories(${APP_ROOT_HOME}/src/database)
 
 include_directories(${TCL_INCLUDE_PATH})
 include_directories(${Boost_INCLUDE_DIRS})
