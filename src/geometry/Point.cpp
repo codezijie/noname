@@ -46,12 +46,12 @@ inline bool Point::operator!=(const Point &p) const {
   return m_x != p.m_x || m_y != p.m_y;
 }
 
-inline Point &operator+(const Point &p1, const Point &p2) {
+inline Point operator+(const Point &p1, const Point &p2) {
   Point p(p1);
   p += p2;
   return p;
 }
-inline Point &operator-(const Point &p1, const Point &p2) {
+inline Point operator-(const Point &p1, const Point &p2) {
   Point p(p1);
   p -= p2;
   return p;

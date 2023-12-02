@@ -3,8 +3,8 @@ include("messages")
 
 swig_lib(NAME       swig_route
          NAMESPACE  route
-         I_FILE     hx_route.i
-         SCRIPTS    hx_route.tcl
+         I_FILE     testCmd.i
+         SCRIPTS    testCmd.tcl
                     utility.tcl
 )
 

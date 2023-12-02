@@ -33,8 +33,8 @@ public:
   bool operator!=(const Point &p) const;
 };
 
-Point &operator+(const Point &p1, const Point &p2);
-Point &operator+(const Point &p1, const Point &p2);
+Point operator+(const Point &p1, const Point &p2);
+Point operator-(const Point &p1, const Point &p2);
 } // namespace geometry
 
 #endif
