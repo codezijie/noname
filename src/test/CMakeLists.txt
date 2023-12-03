@@ -13,3 +13,11 @@ add_test(NAME testDemo
     COMMAND "${EXECUTABLE_OUTPUT_PATH}/testDemo"
     WORKING_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
 )
+
+add_executable(testPause
+test_pause.cpp
+)
+
+target_link_libraries(testPause
+${TCL_LIBRARY}
+)
