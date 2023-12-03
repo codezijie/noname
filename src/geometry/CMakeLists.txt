@@ -1,4 +1,4 @@
 
-add_library(app_geometry
+add_library(geometry
 Point.cpp
 ) 

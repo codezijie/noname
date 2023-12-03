@@ -14,7 +14,8 @@ PRIVATE
 ${TCL_LIBRARY}
 ${TCL_READLINE_LIBRARY}
 
-
 cmd
+gui
+geometry
 swig_route
 )

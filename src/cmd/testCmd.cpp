@@ -10,6 +10,7 @@
  */
 
 #include "testCmd.h"
+#include "gui_ternimal.h"
 #include <algorithm>
 #include <iostream>
 
@@ -20,6 +21,7 @@ TestCmdMgr::TestCmdMgr() { Initalize(); }
 
 void TestCmdMgr::Initalize() {
   RegisterCmd("demo", std::make_unique<DemoTestCmd>());
+  RegisterCmd("tgui", std::make_unique<TerminalGuiTestCmd>());
 }
 
 bool TestCmdMgr::RegisterCmd(const std::string &cmdName,
@@ -66,5 +68,22 @@ bool DemoTestCmd::Run() {
 }
 
 // end DemoTestCmd
+
+// start TerniamlGuiTestCmd
+void TerminalGuiTestCmd::GenFakeData() {
+  // TODO: add some char to draw
+}
+
+bool TerminalGuiTestCmd::Run() {
+  auto tGui = gui::Terniaml::Instance();
+  tGui->SetBoundaryColor(gui::Terniaml::Color::Cyan);
+  tGui->AddBoundary2Frame();
+  tGui->Draw();
+  // tGui->Dump();
+  gui::Terniaml::DeleteInstance();
+  return true;
+}
+
+// end TerniamlGuiTestCmd
 
 } // namespace App

@@ -18,7 +18,7 @@ namespace App {
 class BaseTestCmd {
 public:
   BaseTestCmd() = default;
-  ~BaseTestCmd() = default;
+  virtual ~BaseTestCmd() = default;
 
   virtual void GenFakeData() = 0;
   virtual bool Run() = 0;
@@ -48,6 +48,19 @@ private:
  *
  */
 class DemoTestCmd : public BaseTestCmd {
+public:
+  using BaseTestCmd::BaseTestCmd;
+  virtual void GenFakeData() override;
+  virtual bool Run() override;
+
+private:
+};
+
+/**
+ * @brief test terminal print
+ *
+ */
+class TerminalGuiTestCmd : public BaseTestCmd {
 public:
   using BaseTestCmd::BaseTestCmd;
   virtual void GenFakeData() override;

@@ -11,4 +11,11 @@
 
 #pragma once
 
-namespace util {} // namespace util
+#include <map>
+
+namespace util {
+
+// typedef
+using IntPair = std::pair<int, int>;
+
+} // namespace util

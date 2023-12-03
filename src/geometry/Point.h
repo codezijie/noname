@@ -16,10 +16,10 @@ public:
   Point();
   Point(int x, int y);
   Point(const Point &p);
-  ~Point();
+  ~Point(){};
 
-  int x() { return m_x; }
-  int y() { return m_y; }
+  int x() const { return m_x; }
+  int y() const { return m_y; }
 
   void swap(Point &p);
 
@@ -28,7 +28,7 @@ public:
   Point &operator*=(double scale);
   Point &operator/=(double scale);
 
-  bool operator<(const Point &p) const;
+  bool operator<(Point const &p) const;
   bool operator==(const Point &p) const;
   bool operator!=(const Point &p) const;
 };
