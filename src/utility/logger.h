@@ -47,7 +47,7 @@ private:
                               message + "\n",
                           utl_level_names_[level], utl_tool_names_[tool],
                           tmp->tm_year + 1900, tmp->tm_mon + 1, tmp->tm_mday,
-                          tmp->tm_hour, tmp->tm_min, tmp->tm_sec, args...);)
+                          tmp->tm_hour, tmp->tm_min, tmp->tm_sec, args...));
   }
 
   static constexpr const char *utl_tool_names_[] = {
