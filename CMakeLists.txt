@@ -86,12 +86,14 @@ message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
-IF (FOR_PUBLISH AND CMAKE_BUILD_TYPE STREQUAL "RELEASE")
+if (FOR_PUBLISH AND CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3")
   add_definitions(-DNDEBUG)
   set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Os -Wall -s")
   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Os -Wall -s")
-ENDIF()
+endif()
+
+add_compile_options("-fPIC")
 
 option(GUI "build gui" ON)
 

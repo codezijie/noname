@@ -15,11 +15,13 @@ ${TCL_LIBRARY}
 ${TCL_READLINE_LIBRARY}
 
 cmd
-app_gui
-swig_app
+swig
+database
+geometry
+gui
 Qt6::Gui
 Qt6::Widgets
-xkbcommon
+Qt6::Core
 )
 
 set_target_properties(App PROPERTIES AUTOMOC true)

@@ -1,3 +1,3 @@
-add_library(app_utility
+add_library(utility
 utility.cpp
 )

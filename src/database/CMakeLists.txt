@@ -1,3 +1,3 @@
-add_library(app_database
+add_library(database
 database.cpp
 )
