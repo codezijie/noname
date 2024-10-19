@@ -6,7 +6,7 @@ ${GUI_SOURCES}
 
 target_compile_definitions(App
 PRIVATE
-ENABLE_READLINE
+#ENABLE_READLINE
 )
 
 target_link_libraries(App
