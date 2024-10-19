@@ -1,14 +1,3 @@
-/**
- * @file database.cpp
- * @author codezijie (skd1102@outlook.com)
- * @brief
- * @version 0.0.1
- * @date 2023-06-10
- *
- * @copyright Copyright (c) 2023
- *
- */
-
 #include "database.h"
 
 #include "Polygon.h"

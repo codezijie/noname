@@ -1,14 +1,3 @@
-/**
- * @file testCmd.cpp
- * @author jerry (1057465830@qq.com)
- * @brief
- * @version 0.1
- * @date 2023-03-13
- *
- * @copyright Copyright (c) 2023
- *
- */
-
 #include "testCmd.h"
 #include <algorithm>
 #include <iostream>

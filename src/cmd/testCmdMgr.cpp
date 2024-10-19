@@ -1,14 +1,3 @@
-/**
- * @file hx_interface.cpp
- * @author yanqing (yanqing.cao@huaxinjushu.com)
- * @brief
- * @version 0.1
- * @date 2023-03-10
- *
- * @copyright Copyright (c) 2023
- *
- */
-
 #include "testCmdMgr.h"
 #include "testCmd.h"
 #include <iostream>

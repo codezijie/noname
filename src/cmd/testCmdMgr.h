@@ -1,12 +1,3 @@
-/**
- * @file hx_interface.h
- * @author yanqing (yanqing.cao@huaxinjushu.com)
- * @date 2023-03-10
- *
- * @copyright Copyright (c) 2023
- *
- */
-
 #pragma once
 #include "singleton.h"
 typedef struct Tcl_Interp Tcl_Interp;
