@@ -1,4 +1,4 @@
 #pragma once
 
-void InitRoute();
-int InitRoute(int argc, char **argv);
+void InitApp();
+int InitApp(int argc, char **argv);

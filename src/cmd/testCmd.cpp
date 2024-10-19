@@ -1,6 +1,6 @@
 /**
  * @file testCmd.cpp
- * @author yanqing (yanqing.cao@huaxinjushu.com)
+ * @author jerry (1057465830@qq.com)
  * @brief
  * @version 0.1
  * @date 2023-03-13

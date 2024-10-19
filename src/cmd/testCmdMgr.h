@@ -27,7 +27,7 @@ public:
   bool RunTestCmd(const char *cmdName);
 
 private:
-  bool InitRouteSwig(Tcl_Interp *interp);
+  bool InitAppSwig(Tcl_Interp *interp);
   TestCmdMgr *testCmdMgr_{nullptr};
 };
 

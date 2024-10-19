@@ -16,5 +16,5 @@ ${TCL_READLINE_LIBRARY}
 
 
 cmd
-swig_route
+swig
 )

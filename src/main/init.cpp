@@ -58,9 +58,9 @@ static int TclAppInit(Tcl_Interp *interp) {
   return TCL_OK;
 }
 
-void InitRoute() {}
+void InitApp() {}
 
-int InitRoute(int args, char **argv) {
+int InitApp(int args, char **argv) {
   // TODO: deal with arguments
 
   Tcl_Main(1, argv, TclAppInit);

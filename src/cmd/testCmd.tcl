@@ -2,5 +2,5 @@
 
 
 proc test {cmdName} {
-    route::test $cmdName
+    app::test $cmdName
 }
