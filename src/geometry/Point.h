@@ -9,10 +9,10 @@ namespace geometry {
  * snapped at input.
  */
 class Point {
- private:
+private:
   int m_x, m_y;
 
- public:
+public:
   Point();
   Point(int x, int y);
   Point(const Point &p);
@@ -33,8 +33,8 @@ class Point {
   bool operator!=(const Point &p) const;
 };
 
-Point &operator+(const Point &p1, const Point &p2);
-Point &operator+(const Point &p1, const Point &p2);
-}  // namespace geometry
+Point operator+(const Point &p1, const Point &p2);
+Point operator-(const Point &p1, const Point &p2);
+} // namespace geometry
 
 #endif

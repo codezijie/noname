@@ -74,7 +74,6 @@ int InitApp(int args, char **argv) {
   return 0;
 }
 
-
 char *unencode(const char *inits[]) {
   size_t length = 0;
   for (const char **e = inits; *e; e++) {

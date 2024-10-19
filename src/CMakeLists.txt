@@ -38,6 +38,7 @@ message(STATUS "boost_dir: " ${Boost_DIR})
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core)
 find_package(FMT REQUIRED)
 
+include_directories(${APP_ROOT_HOME}/src)
 include_directories(${APP_ROOT_HOME}/include)
 include_directories(${APP_ROOT_HOME}/include/cmd)
 include_directories(${APP_ROOT_HOME}/include/gui)

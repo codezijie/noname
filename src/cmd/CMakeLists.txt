@@ -1,10 +1,10 @@
 include("swig_lib")
 include("messages")
 
-swig_lib(NAME       swig_app
-         NAMESPACE  app
-         I_FILE     app.i
-         SCRIPTS    test.tcl
+swig_lib(NAME       swig
+         NAMESPACE  app 
+         I_FILE     testCmd.i
+         SCRIPTS    testCmd.tcl
                     utility.tcl
 )
 

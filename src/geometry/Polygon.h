@@ -1,14 +1,3 @@
-/**
- * @file Polygon.h
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2023-06-10
- * 
- * @copyright Copyright (c) 2023
- * 
- */
-
 #pragma once
 
 #include <vector>
@@ -23,14 +12,14 @@ namespace geometry {
  * counterclockwise.
  */
 class Polygon {
- private:
+private:
   // TODO: implementation of Point class
   std::vector<Point> m_hull;
   // TODO: how to store holes in Polygon? Wrap a new structure like "Contour"?
 
- public:
+public:
   Polygon(/* args */);
   ~Polygon();
 };
 
-}  // namespace geometry
+} // namespace geometry
